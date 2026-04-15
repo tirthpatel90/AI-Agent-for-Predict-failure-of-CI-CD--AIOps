@@ -1,66 +1,75 @@
 # AutoHeal CI - AI-Powered CI/CD Predictive Platform
 
-AutoHeal CI is an industry-level, AI-driven CI/CD platform designed to predict deployment failures, automatically suggest fixes, and provide comprehensive insights into pipeline health. It operates as a full-stack monorepo featuring a powerful Python AI Engine and a premium Next.js dashboard.
+AutoHeal CI is an industry-level, AI-driven CI/CD platform designed to predict deployment failures, automatically suggest fixes, and provide comprehensive insights into pipeline health. It operates as a full-stack platform featuring a powerful Python AI Engine and a premium Next.js dashboard.
 
-## Overview
+## 🚀 Recent Progress: Full-Stack Integration
+The project has successfully transitioned from a frontend-only prototype to a fully integrated, end-to-end application.
 
-This repository contains two primary components:
-1. **`autoheal-ci`**: The Next.js frontend dashboard featuring a premium "Dark Glass" UI/UX with physics-based animations.
-2. **`autoheal-backend`**: A fast, secure Python FastAPI backend that interfaces with GitHub and uses the Google Gemini AI API to provide code analysis and automated patching.
+- **Real-Time Data Layer**: Replaced all mock data with real-time GitHub API integration.
+- **Global State Management**: Implemented a React Context-based `RepoContext` for seamless repository switching across the dashboard.
+- **Fast AI Scanning**: Leverages GitHub's **Git Trees API** and **Gemini 2.5 Flash** for lightning-fast, comprehensive repository analysis.
+- **Secure Persistence**: Implemented server-side persistence for connected repositories.
+
+---
+
+## 🛠️ Components
+
+### 1. `autoheal-ci` (Next.js Dashboard)
+- **Premium UI**: "Studio Zen" design system using Glassmorphism with Framer Motion animations.
+- **Dynamic Dashboards**: Real-time visualization of commits, workflow runs, and job logs.
+- **AI Predictions**: Integrated risk assessment gauge and detailed failure cause analysis.
+- **Repo Selector**: Global dropdown to switch context between any connected public repository.
+
+### 2. `autoheal-backend` (FastAPI AI Engine)
+- **GitHub Integration**: Robust API layer for connecting public repos, fetching workflows, and streaming logs.
+- **AI Healer**: Advanced predictive engine using Gemini 2.5 Flash to analyze repository structure and CI configs.
+- **Tree Scanning**: Recursively scans thousands of files in milliseconds to identify CI/CD patterns.
 
 ---
 
 ## 🌟 Key Features
-- **Predictive Failure Analysis:** Monitors commits and build parameters to predict the probability of failure before deployment.
-- **Auto-Fix Engine (Python AI):** Automatically suggests or applies fixes using a growing AI knowledge base. It leverages Google Gemini's reasoning to parse terminal outputs and return exact code patches.
-- **Interactive Pipeline Visualizer:** Beautiful, node-based interactive flow diagrams to monitor CI/CD stages in real-time.
-- **Live GitHub Syncing:** Securely connects to your GitHub account to stream repository metrics and pipeline outcomes directly to the UI.
-- **Premium Glassmorphism UI:** Built with Framer Motion and Tailwind CSS v4, featuring custom glow gradients, animated charts, and fluid transitions.
+- **Predictive Failure Analysis:** Analyzes repository context, CI configurations, and recent commit history to predict failure probability *before* you run your pipeline.
+- **Live Build History:** Fetches and visualizes real GitHub Actions history with duration and status tracking.
+- **Real-Time Logs:** Streams detailed job step logs directly to the dashboard for instant debugging.
+- **Interactive Visualizer:** Node-based interactive flow diagrams for monitoring CI/CD stages.
+- **Premium Aesthetics:** Dark-mode optimized, curated color palettes, and fluid micro-animations.
 
 ---
 
 ## 🚀 Getting Started
 
-This is a full-stack mono-repo. To run the application locally, you will need two separate terminal windows.
+To run the full-stack application locally:
 
-### 1. Start the AI Backend (Terminal 1)
-The backend runs on Python `FastAPI` and listens on `http://localhost:8000`.
+### 1. Prerequisites
+- Python 3.10+
+- Node.js 18+
+- [Gemini API Key](https://aistudio.google.com/app/apikey)
+- [GitHub Personal Access Token](https://github.com/settings/tokens) (Public repo scope)
 
+### 2. Start the AI Backend
 ```bash
 cd autoheal-backend
-
-# Activate your virtual environment and install requirements (first time only)
 python -m venv venv
-.\venv\Scripts\activate
+.\venv\Scripts\activate  # Windows
 pip install -r requirements.txt
-
-# Create your .env file
-# -> Add GITHUB_ACCESS_TOKEN and GEMINI_API_KEY inside the .env file
-
-# Run the backend server
-python -m uvicorn main:app --port 8000 --reload
+# Create .env with GITHUB_ACCESS_TOKEN and GEMINI_API_KEY
+python main.py
 ```
 
-### 2. Start the Frontend Dashboard (Terminal 2)
-The frontend uses Next.js 16 and listens on `http://localhost:3000`.
-
+### 3. Start the Frontend Dashboard
 ```bash
 cd autoheal-ci
-
-# Install Node dependencies (first time only)
 npm install
-
-# Start the Next.js development server
 npm run dev
 ```
 
-Finally, open [http://localhost:3000](http://localhost:3000) in your browser to experience the AutoHeal CI platform.
+Visit `http://localhost:3000` to start connecting repositories.
 
 ---
 
 ## 🛠️ Technology Stack
-- **Frontend Framework:** Next.js 16 (App Router + React 19)
-- **Backend Framework:** Python 3 (FastAPI, Uvicorn, HTTPX)
-- **AI Infrastructure:** Google Generative AI (Gemini Flash)
-- **Styling:** Tailwind CSS v4 + Framer Motion
-- **Data Visualization:** Recharts
+- **Frontend**: Next.js 16, React 19, Framer Motion, Recharts
+- **Backend**: FastAPI, HTTPX, Pydantic, Python 3.13
+- **AI**: Google Generative AI (Gemini 2.5 Flash)
+- **Styling**: Vanilla CSS (Studio Zen Design System)
+- **API**: GitHub REST API + Git Trees API
