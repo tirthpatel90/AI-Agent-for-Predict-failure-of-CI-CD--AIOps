@@ -1,118 +1,75 @@
-<div align="center">
+# AutoHeal - Autonomous Pipeline Healing Platform
 
-![AutoHeal CI Banner](docs/images/banner.png)
-
-# ⚡ AutoHeal CI
-
-### AI-Powered CI/CD Predictive Platform & Automated Healing Engine
-
-[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-05998b?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
-[![Gemini 2.5](https://img.shields.io/badge/AI-Gemini_2.5_Flash-8b5cf6?style=for-the-badge&logo=google-gemini)](https://ai.google.dev/)
-[![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS-v4-38bdf8?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
-
-<p align="center">
-  <b>Predict deployment failures, analyze workflow logs with AI, and heal your CI/CD pipelines before they even break.</b>
-  <br />
-  Built for high-performance DevOps teams looking for the "Studio Zen" developer experience.
-</p>
-
-[Explore Dashboard](#-getting-started) • [Key Features](#-key-features) • [Architecture](#-technical-architecture) • [Setup Guide](#-setup-guide)
-
-</div>
-
----
+AutoHeal is an autonomous CI/CD intelligence and healing platform designed to detect, analyze, and repair pipeline failures before code even leaves the developer's machine. By providing a "pre-push" intelligence layer, it ensures that only healthy code enters the integration stage.
 
 ## 💡 The Problem
-Modern CI/CD pipelines are often "black boxes" that fail for predictable reasons—dependency drifts, configuration errors, or subtle code conflicts. Developers shouldn't have to wait 20 minutes for a pipeline to fail just to see a common error log.
+In modern software development, developers often commit code and wait for CI/CD pipelines to fail before discovering obvious configuration drifts, dependency conflicts, or environment mismatches. This "wait-and-fail" cycle wastes thousands of compute hours and developer productivity every day.
 
-## ✨ The Solution: AutoHeal CI
-AutoHeal CI integrates directly with the **GitHub API** to provide an AI-infused layer over your existing workflows. It doesn't just show you what happened; it **predicts what will happen** and tells you **how to fix it**.
+## ✨ The Solution
+AutoHeal acts as an autonomous healing layer. Currently, the platform allows developers to paste a repository URL to perform a deep scan of the repository's CI/CD structure and dependencies. It predicts potential failures in the "Working Phase"—identifying issues before a push is even initiated.
 
 ---
 
 ## 🚀 Key Features
 
-### 🧠 AI-Powered Predictions
-Utilizes **Gemini 2.5 Flash** to analyze repository structure, CI/CD configurations (`.github/workflows`, `Jenkinsfile`), and dependency files to predict pipeline success with a calculated risk score.
+### 🛠️ Pre-Push Failure Detection
+Analyze your repository context and CI configurations (`.github/workflows`, `Jenkinsfile`, etc.) to calculate a failure probability score before you initiate a deployment.
 
-### 💨 Lightning-Fast Repository Scanning
-Uses the **GitHub Git Trees API** to recursively map entire repositories (thousands of files) in milliseconds. No more slow, sequential file-by-file fetching.
+### ⚡ Rapid Intelligence Scanning
+Utilizes high-performance recursive tree mapping to analyze entire repository structures in seconds, ensuring complete coverage of even the largest monorepos.
 
-### 📊 Live Pipeline Visualizer
-A premium, interactive dashboard built with **Framer Motion** and **Recharts**. Monitor your build history, success rates, and average durations with stunning glassmorphic UI components.
+### 📊 Real-Time Pipeline Intelligence
+A comprehensive dashboard provides a unified view of your build history, success metrics, and average durations, allowing project leads to monitor health levels at a glance.
 
-### 🔍 Real-Time Log Streaming
-Drill down into specific workflow jobs and steps. Fetch real logs directly from GitHub and have the AI analyze failures on-the-fly to suggest instant patches.
+### 🔦 Deep Log Analysis
+Fetch and analyze live GitHub Actions logs. The system identifies specific job failures and provides autonomous repair suggestions to keep the development cycle fluid.
 
-### 🔄 Multi-Repo Context
-Seamlessly switch between multiple connected repositories using a global context-aware repository selector.
-
----
-
-## 🏗️ Technical Architecture
-
-```mermaid
-graph TD
-    User((Developer)) -->|Interacts| NextJS[Next.js 16 Dashboard]
-    NextJS -->|API Requests| FastAPI[FastAPI AI Backend]
-    FastAPI -->|Fetch Tree/Logs/Commits| GitHub[GitHub REST API]
-    FastAPI -->|Analyze Context| Gemini[Gemini 2.5 Flash AI]
-    Gemini -->|Return Prediction/Fix| FastAPI
-    FastAPI -->|JSON Payload| NextJS
-    NextJS -->|Render UI| User
-```
+### 🌀 Multi-Context Management
+Maintain a connected set of repositories and switch between them instantly to monitor the health of your entire portfolio from a single interface.
 
 ---
 
 ## 🛠️ Technology Stack
 
-| Layer | Technology |
+| Platform Layer | Technology |
 |---|---|
-| **Frontend** | Next.js 16 (App Router), React 19, Framer Motion, Tailwind CSS v4, Lucide Icons |
-| **Backend** | Python 3.13, FastAPI, Uvicorn, HTTPX (Asynchronous Client) |
-| **AI Engine** | Google Generative AI (Gemini 2.5 Flash) |
-| **Data Flow** | Recharts (Analytics), React Context (State Management) |
+| **Intelligence Engine** | High-performance Python backend for rapid file-tree analysis |
+| **Logic Framework** | FastAPI (Asynchronous stream handling) |
+| **Interface** | Next.js with "Studio Zen" design system (Fluid animations) |
+| **Data Engine** | Framer Motion & Recharts for real-time visualization |
 
 ---
 
-## 📖 Setup Guide
+## 🚀 Setup Guide
 
 ### 1. Prerequisites
-- **Git** & **Node.js** (v18+)
-- **Python 3.10+** & **pip**
-- [Gemini API Key](https://aistudio.google.com/app/apikey)
-- [GitHub Personal Access Token](https://github.com/settings/tokens) (Scope: `repo`, `workflow`)
+- **Node.js 18+** & **Python 3.10+**
+- **GitHub Personal Access Token** (Required for secure repository indexing)
+- **AI Access Token** (Required for the healing engine)
 
-### 2. Backend Installation (Terminal 1)
+### 2. Engine Setup (Backend)
 ```bash
 cd autoheal-backend
 python -m venv venv
 source venv/bin/activate  # Windows: .\venv\Scripts\activate
 pip install -r requirements.txt
-```
-Create a `.env` file in `autoheal-backend/`:
-```env
-GITHUB_ACCESS_TOKEN=your_github_token
-GEMINI_API_KEY=your_gemini_key
-```
-Run the server:
-```bash
+# Configure your .env with necessary access tokens
 python main.py
 ```
 
-### 3. Frontend Installation (Terminal 2)
+### 3. Interface Setup (Frontend)
 ```bash
 cd autoheal-ci
 npm install
 npm run dev
 ```
 
-Visit `http://localhost:3000` and connect your first public repository to see the magic happen!
+Visit `http://localhost:3000` to start healing your pipelines.
 
 ---
 
-<div align="center">
-  <p>Made with ❤️ for the DevOps community.</p>
-  <sub>AutoHeal CI - Version 1.2.0 - Studio Zen Design</sub>
-</div>
+## 🤝 Open Source & Contributing
+AutoHeal is an open-source project and we welcome contributions from the community! Whether you are fixing a bug, suggesting a new feature, or improving the healing logic:
+- **Feel free to contribute!** 
+- Fork the repository, create your feature branch, and submit a PR.
+- Let's build the future of autonomous DevOps together.
