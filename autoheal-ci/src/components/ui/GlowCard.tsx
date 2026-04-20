@@ -38,6 +38,12 @@ export default function GlowCard({ children, className = '', glowColor = 'violet
 
   const color = glowColorMap[glowColor];
 
+  const background = useTransform(
+    [mouseX, mouseY],
+    ([x, y]) =>
+      `radial-gradient(400px circle at ${x}px ${y}px, rgba(${color.r}, ${color.g}, ${color.b}, 0.06), transparent 60%)`
+  );
+
   return (
     <motion.div
       ref={cardRef}
@@ -60,11 +66,7 @@ export default function GlowCard({ children, className = '', glowColor = 'violet
           className="pointer-events-none absolute -inset-px rounded-2xl"
           style={{
             opacity,
-            background: useTransform(
-              [mouseX, mouseY],
-              ([x, y]) =>
-                `radial-gradient(400px circle at ${x}px ${y}px, rgba(${color.r}, ${color.g}, ${color.b}, 0.06), transparent 60%)`
-            ),
+            background,
           }}
         />
       )}
