@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 # Load environment variables securely from .env
 load_dotenv()
 
-from routes import github, ai_healer
+from routes import github, ai_healer, auth
 
 app = FastAPI(title="AutoHeal CI Backend")
 
@@ -20,6 +20,7 @@ app.add_middleware(
 )
 
 # Connect routers
+app.include_router(auth.router, prefix="/api/v1/auth", tags=["auth"])
 app.include_router(github.router, prefix="/api/v1/github", tags=["github"])
 app.include_router(ai_healer.router, prefix="/api/v1/heal", tags=["heal"])
 
