@@ -14,12 +14,7 @@ const features = [
   { icon: GitBranch, title: 'GitHub Integration', description: 'Connect repositories and analyze commits directly from your workflow.', color: '#22d3ee', gradient: 'from-cyan/10 to-cyan/5' },
 ];
 
-const stats = [
-  { value: '84%', label: 'Prediction Accuracy' },
-  { value: '71%', label: 'Auto-Fix Success' },
-  { value: '47h', label: 'Compute Time Saved' },
-  { value: '143', label: 'Errors Learned' },
-];
+
 
 const staggerChildren = {
   animate: { transition: { staggerChildren: 0.08 } },
@@ -87,28 +82,15 @@ export default function HomePage() {
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
             <Link
-              href="/pipelines"
+              href="/overview"
               className="flex items-center gap-2 bg-graphite-lighter/80 backdrop-blur-sm border border-graphite-border/60 hover:border-violet/20 hover:bg-graphite-hover text-text-primary px-7 py-3.5 rounded-xl font-medium transition-all duration-300 text-sm"
             >
-              View Demo Pipeline
+              Explore Dashboard
             </Link>
           </motion.div>
         </motion.div>
 
-        {/* Stats bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex items-center gap-8 md:gap-16 mb-16"
-        >
-          {stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <p className="text-2xl md:text-3xl font-bold font-mono text-text-primary tracking-tight">{stat.value}</p>
-              <p className="text-xs text-text-muted mt-1">{stat.label}</p>
-            </div>
-          ))}
-        </motion.div>
+
 
         {/* Hero Pipeline */}
         <motion.div
