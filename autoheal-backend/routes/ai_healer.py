@@ -20,7 +20,7 @@ def init_gemini():
         raise HTTPException(status_code=500, detail="Gemini API Key is not configured in .env")
     genai.configure(api_key=api_key)
     # Using Gemini 1.5 Flash for fast, free, high-performance general text analysis
-    return genai.GenerativeModel("models/gemini-2.5-flash")
+    return genai.GenerativeModel("models/gemini-2.0-flash")
 
 @router.post("/analyze")
 async def analyze_error(report: ErrorReport):
