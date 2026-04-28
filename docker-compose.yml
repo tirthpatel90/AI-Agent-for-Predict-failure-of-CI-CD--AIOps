@@ -1,0 +1,21 @@
+services:
+  backend:
+    build: ./autoheal-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./autoheal-backend/connected_repos.json:/app/connected_repos.json
+      - ./autoheal-backend/db/users.json:/app/db/users.json
+    env_file:
+      - ./autoheal-backend/.env
+    restart: always
+
+  frontend:
+    build: ./autoheal-ci
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    restart: always
