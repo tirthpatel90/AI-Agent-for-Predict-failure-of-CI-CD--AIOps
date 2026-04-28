@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+autoheal-ci/node_modules/
+autoheal-backend/venv/
+autoheal-backend/__pycache__/
+
+# Next.js
+autoheal-ci/.next/
+autoheal-ci/out/
+autoheal-ci/next-env.d.ts
+autoheal-ci/*.tsbuildinfo
+
+# Python
+*.pyc
+autoheal-backend/.pytest_cache/
+
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+autoheal-backend/.env
+autoheal-ci/.env*
+
+# Local Databases / Generated Files
+autoheal-backend/connected_repos.json
+autoheal-backend/db/users.json
+autoheal-ci/errors.txt
+autoheal-ci/errors8.txt
+autoheal-ci/walkthrough.md
+
+# OS
+.DS_Store
+Thumbs.db
