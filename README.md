@@ -1,75 +1,108 @@
-# AutoHeal - Autonomous Pipeline Healing Platform
+# 🚀 AutoHeal CI: Autonomous DevOps Intelligence
 
-AutoHeal is an autonomous CI/CD intelligence and healing platform designed to detect, analyze, and repair pipeline failures before code even leaves the developer's machine. By providing a "pre-push" intelligence layer, it ensures that only healthy code enters the integration stage.
-
-## 💡 The Problem
-In modern software development, developers often commit code and wait for CI/CD pipelines to fail before discovering obvious configuration drifts, dependency conflicts, or environment mismatches. This "wait-and-fail" cycle wastes thousands of compute hours and developer productivity every day.
-
-## ✨ The Solution
-AutoHeal acts as an autonomous healing layer. Currently, the platform allows developers to paste a repository URL to perform a deep scan of the repository's CI/CD structure and dependencies. It predicts potential failures in the "Working Phase"—identifying issues before a push is even initiated.
+AutoHeal CI is a state-of-the-art, AI-powered platform designed to predict, analyze, and automatically resolve CI/CD pipeline failures before they impact your production flow. By integrating deep repository analysis with Google Gemini's advanced reasoning, AutoHeal CI transforms traditional "fail-and-fix" cycles into a proactive, autonomous ecosystem.
 
 ---
 
-## 🚀 Key Features
+## ✨ Key Features
 
-### 🛠️ Pre-Push Failure Detection
-Analyze your repository context and CI configurations (`.github/workflows`, `Jenkinsfile`, etc.) to calculate a failure probability score before you initiate a deployment.
-
-### ⚡ Rapid Intelligence Scanning
-Utilizes high-performance recursive tree mapping to analyze entire repository structures in seconds, ensuring complete coverage of even the largest monorepos.
-
-### 📊 Real-Time Pipeline Intelligence
-A comprehensive dashboard provides a unified view of your build history, success metrics, and average durations, allowing project leads to monitor health levels at a glance.
-
-### 🔦 Deep Log Analysis
-Fetch and analyze live GitHub Actions logs. The system identifies specific job failures and provides autonomous repair suggestions to keep the development cycle fluid.
-
-### 🌀 Multi-Context Management
-Maintain a connected set of repositories and switch between them instantly to monitor the health of your entire portfolio from a single interface.
+- **🔮 Predictive Health Analysis**: Uses AI to scan repository structures, CI configs, and recent commits to predict failure probability and identify risks.
+- **🛠️ AI-Powered Healer**: Automatically analyzes build logs and code context to provide exact code fixes for failed pipelines.
+- **📊 Real-time Dashboard**: A high-fidelity, Cyber-Glass aesthetic dashboard to monitor all connected repositories and their pipeline statuses.
+- **🔗 Seamless GitHub Integration**: Connect any public repository instantly to start monitoring its health.
+- **🔒 Secure Architecture**: Implements JWT-based authentication with httpOnly cookies and hashed password storage.
 
 ---
 
-## 🛠️ Technology Stack
+## 🏗️ Technology Stack
 
-| Platform Layer | Technology |
-|---|---|
-| **Intelligence Engine** | High-performance Python backend for rapid file-tree analysis |
-| **Logic Framework** | FastAPI (Asynchronous stream handling) |
-| **Interface** | Next.js with "Studio Zen" design system (Fluid animations) |
-| **Data Engine** | Framer Motion & Recharts for real-time visualization |
+### Frontend (Dashboard)
+- **Framework**: Next.js 15+ (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS 4
+- **Animations**: Framer Motion & Lucide React
+- **Visualization**: Recharts & Three.js
+
+### Backend (Intelligence Engine)
+- **Framework**: FastAPI (Python 3.13)
+- **AI Engine**: Google Gemini 2.0 Flash
+- **Database**: Lightweight JSON Persistence (Extensible to PostgreSQL)
+- **Security**: JWT (HS256), Bcrypt, CORS Middleware
 
 ---
 
-## 🚀 Setup Guide
+## 🚀 Getting Started
 
-### 1. Prerequisites
-- **Node.js 18+** & **Python 3.10+**
-- **GitHub Personal Access Token** (Required for secure repository indexing)
-- **AI Access Token** (Required for the healing engine)
+### Prerequisites
+- Node.js 20+
+- Python 3.13+
+- [Google AI Studio API Key](https://aistudio.google.com/app/apikey)
 
-### 2. Engine Setup (Backend)
+### Local Setup
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/tirthpatel90/AutoHeal-CI.git
+   cd AutoHeal-CI
+   ```
+
+2. **Configure Backend**:
+   ```bash
+   cd autoheal-backend
+   python -m venv venv
+   source venv/bin/scripts/activate  # or venv\Scripts\activate on Windows
+   pip install -r requirements.txt
+   ```
+   Create a `.env` file in `autoheal-backend/`:
+   ```env
+   GEMINI_API_KEY=your_gemini_api_key
+   JWT_SECRET_KEY=your_secure_random_secret
+   GITHUB_ACCESS_TOKEN=optional_github_token_for_higher_limits
+   ```
+
+3. **Configure Frontend**:
+   ```bash
+   cd ../autoheal-ci
+   npm install
+   ```
+
+4. **Run with Docker (Recommended)**:
+   ```bash
+   docker-compose up --build
+   ```
+
+---
+
+## 🐳 Docker Support
+
+The project includes full Docker support for easy deployment and development.
+- **Backend**: Runs on `http://localhost:8000`
+- **Frontend**: Runs on `http://localhost:3000`
+
+To start everything:
 ```bash
-cd autoheal-backend
-python -m venv venv
-source venv/bin/activate  # Windows: .\venv\Scripts\activate
-pip install -r requirements.txt
-# Configure your .env with necessary access tokens
-python main.py
+docker-compose up
 ```
 
-### 3. Interface Setup (Frontend)
-```bash
-cd autoheal-ci
-npm install
-npm run dev
-```
+---
 
-Visit `http://localhost:3000` to start healing your pipelines.
+## 🧪 CI/CD Pipeline
+
+The project uses GitHub Actions (`.github/workflows/ci.yml`) for automated testing:
+- **Frontend Build**: Validates Next.js build and TypeScript compilation.
+- **Backend Smoke Test**: Ensures the FastAPI server starts successfully and all dependencies are resolved.
 
 ---
 
-## 🤝 Open Source & Contributing
-AutoHeal is an open-source project and we welcome contributions from the community! Whether you are fixing a bug, suggesting a new feature, or improving the healing logic:
-- **Feel free to contribute!** 
-- Fork the repository, create your feature branch, and submit a PR.
-- Let's build the future of autonomous DevOps together.
+## 🛡️ License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
+
+---
+*Built with ❤️ for the DevOps Community.*
